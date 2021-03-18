@@ -25,4 +25,7 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+table td{
+  vertical-align:middle!important;
+}
 </style>
