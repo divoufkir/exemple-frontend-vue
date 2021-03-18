@@ -52,15 +52,11 @@ export default {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-      }).then(() => (this.$route.push('/user')));
+      }).then(() => (this.$router.push('/user')));
     },
     handleFileUpload(){
       this.user['picture'] = this.$refs.file.files[0];
     }
   },
-  mounted: function () {
-    // this.get(this.$route.params.id);
-    //this.user = ;
-  }
 }
 </script>

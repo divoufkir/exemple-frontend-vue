@@ -27,8 +27,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
-//import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'UserEdit',
@@ -47,13 +45,17 @@ export default {
     save(id) {
       let formData = new FormData();
 
+      formData.append('_method', 'patch');
       Object.keys(this.user).map(key => (formData.append(key, this.user[key])));
 
-      this.$http.patch('http://127.0.0.1:8000/api/user/' + id, formData, {
+      this.$http.post('http://127.0.0.1:8000/api/user/' + id, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-      }).then(() => (this.$route.push('/user')));
+      }).then(() => (this.$router.push('/user')));
+    },
+    handleFileUpload(){
+      this.user['picture'] = this.$refs.file.files[0];
     }
   },
   mounted: function(){
